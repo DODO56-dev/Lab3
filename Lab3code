@@ -1,0 +1,65 @@
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+using namespace std;
+
+void zerofunc(int** arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			*(*(arr + i) + j) = 0;
+		}
+	}
+	return;
+}
+void arrout(int** arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			cout << setw(2) << *(*(arr + i) + j);
+		}
+		cout << endl;
+	}
+	cout << endl;
+	return;
+}
+void onefunc(int**arr,int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (j <= i){ *(*(arr + i) + j) = 1; }
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int size;
+	cout << " Enter size: ";
+	cin >> size;
+	cout << endl;
+	int** parr = new int* [size];
+	for (int i = 0; i < size; i++)
+	{
+		parr[i] = new int[size];
+	}
+	zerofunc(parr, size);
+	arrout(parr, size);
+	onefunc(parr, size);
+	arrout(parr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		delete[]parr[i];
+	}
+	delete[]parr;
+	_getch();
+	return 0;
+}
